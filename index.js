@@ -40,7 +40,7 @@ import { redis } from "./redis.js";
       throw new Error("invalid code");
     }
 
-    const redirectUrl = process.env.REDIRECT_URL || `http://localhost:${PORT}/callback.html`;
+    const redirectUrl = "https://one-million-checkboxes-qf98.onrender.com/callback.html" || `http://localhost:${PORT}/callback.html`;
     const response = await fetch("https://oidc-t4w5.onrender.com/o/token", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
