@@ -40,6 +40,7 @@ import { redis } from "./redis.js";
       throw new Error("invalid code");
     }
 
+    const redirectUrl = process.env.REDIRECT_URL || `http://localhost:${PORT}/callback.html`;
     const response = await fetch("https://oidc-t4w5.onrender.com/o/token", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -48,7 +49,7 @@ import { redis } from "./redis.js";
         clientId: process.env.CLIENT_ID,
         clientSecret: process.env.CLIENT_SECRET,
         grant_type: "authorization_code",
-        redirect_url: "http://localhost:5000/callback.html",
+        redirect_url: redirectUrl,
       }),
     });
 
